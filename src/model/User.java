@@ -1,11 +1,13 @@
-public class User {
-    private  int id;
+package model;
+
+public abstract class User {
+    private int id;
     private String name;
     private String email;
     private String address;
     private String phoneNumber;
 
-    User(String name, String email){
+    public User(String name, String email) {
         this.name = name;
         this.email = email;
     }
@@ -47,15 +49,18 @@ public class User {
     }
 
     public void setPhoneNumber(String phoneNumber) {
-        if(phoneNumber.length() < 10){
-            System.out.println("Ingresa un numero valido");
-        } else if (phoneNumber.length() == 10) {
+        if (phoneNumber.length() > 8){
+            System.out.println("El número telefónico debe ser de 8 dígitos máximo");
+        }else if(phoneNumber.length() == 8){
             this.phoneNumber = phoneNumber;
         }
     }
 
     @Override
     public String toString() {
-        return "name "+ name+ "email "+ email;
+        return "model.User: " + name + ", Email: "+email+
+                "\nAddreess: "+address+". Phone: "+phoneNumber;
     }
+
+    abstract  void  showData();
 }
